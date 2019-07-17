@@ -15,12 +15,12 @@ client.on(`message`, async msg =>{
     if(!msg.content.startsWith(PREFIX)){
         return undefined;
     }
-    let args = msg.content.split(` `)
+    var args = msg.content.split(' ')
     
     if(msg.content.startsWith(`${PREFIX}play`)){
-        let voiceChannel = msg.member.voiceChannel;
+        var { voiceChannel } = msg.member;
         if(!voiceChannel){
-            return msg.channel.send(`You need to be in a voice channel`)
+            return msg.channel.send(`You need to be in a voice channel`);
         }
         const permissions = voiceChannel.permissionsFor(msg.client.user);
         if(!permissions.has(`CONNECT`)){
